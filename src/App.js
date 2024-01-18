@@ -7,6 +7,7 @@ import { books } from "./data/books";
 import {SmallBookListItem} from "./components/books/SmallListItems";
 import {LargeBookListItem} from "./components/books/LargeListItems";
 import NumberedList from "./components/lists/Numbered";
+import { Modal } from "./components/Modal";
 
 const AuthorLeftSideComp =({title}) =>{
   return(
@@ -39,11 +40,29 @@ const RightSideComp = ({title}) =>{
 function App() {
   return (
     <>
+    {/* Items Component Desing Pattern */}
+    <h1>Layout Component - 3. Modal + Lists</h1>
+
+    <h2>Books's Lists</h2>
+      <Modal>
+        <LargeBookListItem book={books[0]} />
+      </Modal>
+
     <h1>Layout Component - Combination of two - Split-Screen + Lists</h1>
     <SplitScreen leftWidth={1} rightWidth={1}>
         <AuthorLeftSideComp title="Left Side" />
         <BooksRightSideComp title="Right Side" />
     </SplitScreen>
+
+     {/* Items Component Desing Pattern */}
+     <h1>Layout Component - 2. Lists</h1>
+
+    <h2>Authors's Lists</h2>
+    <RegularList items={authors} sourceName={"author"} ItemComponent={SmallAuthorListItem}/>
+    <NumberedList items={authors} sourceName={"author"} ItemComponent={LargeAuthorListItem}/>
+    <h2>Books's Lists</h2>
+    <RegularList items={books} sourceName={"book"} ItemComponent={SmallBookListItem}/>
+    <NumberedList items={books} sourceName={"book"} ItemComponent={LargeBookListItem}/>
 
 
     {/* Split-Screen Component Desing Pattern */}
@@ -55,15 +74,10 @@ function App() {
 
     
 
-    {/* Items Component Desing Pattern */}
-    <h1>Layout Component - 2. Lists</h1>
+   
 
-    <h2>Authors's Lists</h2>
-    <RegularList items={authors} sourceName={"author"} ItemComponent={SmallAuthorListItem}/>
-    <NumberedList items={authors} sourceName={"author"} ItemComponent={LargeAuthorListItem}/>
-    <h2>Books's Lists</h2>
-    <RegularList items={books} sourceName={"book"} ItemComponent={SmallBookListItem}/>
-    <NumberedList items={books} sourceName={"book"} ItemComponent={LargeBookListItem}/>
+    
+      
 
     </>
     
